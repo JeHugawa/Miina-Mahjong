@@ -13,7 +13,7 @@ Pelin alussa molemmat pelaajat nostavat 34 tiiltä. Sen jälkeen he tekevät yhd
 Pelissä on kaksi käyttäjää, pelaajat. Vaihtoehtoisesti toinen pelaajista voi olla tekoäly. Todennäköisesti kannattaa ohjelma toteuttaa ensin kahdelle pelaajalle, ja sitten myöhemmin voidaan ajan salliessa toteuttaa simppeli tekoäl.
 
 # Perustoiminnallisuus
-- [ ] Pelaajat saavat alussa tiilensä ja voivat valita kätensä
+- [x] Pelaajat saavat alussa tiilensä ja voivat valita kätensä
 - [ ] Pelaajat voivat vuorotellen heittää tiilen pois
 - [ ] pelaajat voivat julistaa voiton
 - [ ] Käsien laillisuuden tarkistus
