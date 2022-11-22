@@ -1,4 +1,4 @@
-#class for parsing hand
+#lass for parsing hand
 class PlayingHand: 
     def __init__(self, hand: list, discards: list, tilepool: list):
         self.hand = hand
@@ -14,6 +14,10 @@ class PlayingHand:
         print("_________________")
         print("Discard pool")
         print(playerhand.discards)
+    
+    def discard(playerhand,discard):
+        playerhand.tilepool.remove(discard)
+        playerhand.discards.append(discard)
 
 
 class HandParser:

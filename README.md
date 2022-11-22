@@ -14,10 +14,10 @@ Pelissä on kaksi käyttäjää, pelaajat. Vaihtoehtoisesti toinen pelaajista vo
 
 # Perustoiminnallisuus
 - [x] Pelaajat saavat alussa tiilensä ja voivat valita kätensä
-- [ ] Pelaajat voivat vuorotellen heittää tiilen pois
+- [x] Pelaajat voivat vuorotellen heittää tiilen pois
 - [ ] pelaajat voivat julistaa voiton
 - [ ] Käsien laillisuuden tarkistus
-- [ ] käyttöliittymä pelille
+- [ ] Graafinen käyttöliittymä pelille
 
 # jatkokehitus
 Sääntötarkennukset lisäominaisuuksille tulee kun ominaisuus lisätään

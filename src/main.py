@@ -18,4 +18,21 @@ print(p1pool)
 p1hand = HandParser.parsehand([0,0,0,0,0,0,0,0,0,0,0,0,0], p1pool)
 p2hand = HandParser.parsehand([0,0,0,0,0,0,0,0,0,0,0,0,0], p2pool)
 
-PlayingHand.printhand(p1hand)
+
+#todo: remove bunch of test prints and clean the code for the mainloop(maybe break into files)
+#todo: currently the program doesnt work if you give illegal discard
+while True:
+    print("player1 turn")
+    PlayingHand.printhand(p1hand)
+    discard = input("choose tile from pool to discard:")
+    PlayingHand.discard(p1hand,discard)
+    PlayingHand.printhand(p1hand)
+    print("_________________________________________________")
+    print("player2 turn")
+    PlayingHand.printhand(p2hand)
+    discard = input("choose tile from pool to discard:")
+    PlayingHand.discard(p2hand,discard)
+    PlayingHand.printhand(p2hand)
+    if len(p2hand.tilepool) == 4:
+        print("Draw")
+        break
