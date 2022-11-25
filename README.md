@@ -13,9 +13,16 @@ Pelin alussa molemmat pelaajat nostavat 34 tiiltä. Sen jälkeen he tekevät yhd
 - [Työaikakirjanpito](./docs/tuntikirjanpito.md)
 - [Changelog](./docs/changelog.md)
 - [TODO](./docs/todo.md)
-- [Määrittelydokumentti](./docs/)
+- [Määrittelydokumentti](./docs/vaatimusmaarittely.md)
 
+## käyttöohjeet
 
-# Käyttäjät
+Asenna projekti ajamalla:
+```
+poetry install
+```
 
-Pelissä on kaksi käyttäjää, pelaajat. Vaihtoehtoisesti toinen pelaajista voi olla tekoäly. Todennäköisesti kannattaa ohjelma toteuttaa ensin kahdelle pelaajalle, ja sitten myöhemmin voidaan ajan salliessa toteuttaa simppeli tekoäl.
+Voit ajaa projektin ajamalla:
+```
+poetry run invoke start
+```
