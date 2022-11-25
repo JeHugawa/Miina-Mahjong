@@ -5,7 +5,7 @@ class PlayingHand:
         self.discards = discards
         self.tilepool = tilepool
 
-    def printhand(playerhand):
+    def print_hand(playerhand):
         print("Players hand")
         print(playerhand.hand)
         print("________________")
@@ -21,11 +21,10 @@ class PlayingHand:
 
 
 class HandParser:
-    def parsehand(selections,tiles):
+    def parse_hand(selections,tiles):
         hand = []
         for x in selections:
             #TODO: Remove usage of pop and pick tiles instead of positions
             hand.append(tiles.pop(x))        
         playerhand = PlayingHand(hand, [], tiles)
         return playerhand
-

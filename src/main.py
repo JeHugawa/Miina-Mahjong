@@ -15,24 +15,24 @@ p2pool.sort()
 print(p1pool)
 
 #TODO: pop cant be used to pick tiles from certain position as it removes the pick from list. there's other implementations but its better to implement it with selecting tiles instead of their relative position
-p1hand = HandParser.parsehand([0,0,0,0,0,0,0,0,0,0,0,0,0], p1pool)
-p2hand = HandParser.parsehand([0,0,0,0,0,0,0,0,0,0,0,0,0], p2pool)
+p1hand = HandParser.parse_hand([0,0,0,0,0,0,0,0,0,0,0,0,0], p1pool)
+p2hand = HandParser.parse_hand([0,0,0,0,0,0,0,0,0,0,0,0,0], p2pool)
 
 
 #todo: remove bunch of test prints and clean the code for the mainloop(maybe break into files)
 #todo: currently the program doesnt work if you give illegal discard
 while True:
     print("player1 turn")
-    PlayingHand.printhand(p1hand)
+    PlayingHand.print_hand(p1hand)
     discard = input("choose tile from pool to discard:")
     PlayingHand.discard(p1hand,discard)
-    PlayingHand.printhand(p1hand)
+    PlayingHand.print_hand(p1hand)
     print("_________________________________________________")
     print("player2 turn")
-    PlayingHand.printhand(p2hand)
+    PlayingHand.print_hand(p2hand)
     discard = input("choose tile from pool to discard:")
     PlayingHand.discard(p2hand,discard)
-    PlayingHand.printhand(p2hand)
+    PlayingHand.print_hand(p2hand)
     if len(p2hand.tilepool) == 4:
         print("Draw")
         break
