@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "miina-mahjong"
+version = "0.1.0"
+description = ""
+authors = ["Jasper Hjorth <jasper.hjorth@gmail.com>"]
+readme = "README.md"
+packages = [{include = "miina_mahjong"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+invoke = "^1.7.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
