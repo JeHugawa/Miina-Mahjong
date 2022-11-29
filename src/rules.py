@@ -3,14 +3,14 @@ import re
 from collections import defaultdict
 
 class Rules:
-    
+
 
     def is_pon(selection):
         if selection[0] == selection[1] == selection[2]:
             return True
         return False
-    
-    
+
+
     def is_chi(selection):
         selection = sorted(selection)
         if selection[0] < selection[1] < selection[2]:
@@ -30,7 +30,7 @@ class Rules:
 #2.5. there can be max 2 suits waiting: either one waiting for set or pair wait for two different suits.
 #3. for the possible waiting suit(s), we will check which tiles are adjanced to the hand. After that, we will check each tile whetever they will complete the hand. If they complete the hand, hand is in Tenpai and we will put the waiting tiles to wait list and return it
 
-    #check how many suits 
+    #check how many suits
     def suit_counter(hand):
         amount = {}
         for tile in hand:
@@ -48,7 +48,7 @@ class Rules:
         # TODO
         #return winning_tiles
 
-    
+
     #for a valid hand you need 4 sets and a pair
     def check_hand_completeness(hand):
         if len(hand) != 14:
