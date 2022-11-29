@@ -14,12 +14,13 @@ p1pool.sort()
 p2pool.sort()
 print(p1pool)
 
-#TODO: pop cant be used to pick tiles from certain position as it removes the pick from list. there's other implementations but its better to implement it with selecting tiles instead of their relative position
+#TODO: pop cant be used to pick tiles from certain position as it removes the pick from list.
+#There's other implementations but its better to implement it with selecting tiles instead of their relative position.
+
 p1hand = HandParser.parse_hand([0,0,0,0,0,0,0,0,0,0,0,0,0], p1pool)
 p2hand = HandParser.parse_hand([0,0,0,0,0,0,0,0,0,0,0,0,0], p2pool)
 
 
-#todo: remove bunch of test prints and clean the code for the mainloop(maybe break into files)
 #todo: currently the program doesnt work if you give illegal discard
 while True:
     print("player1 turn")

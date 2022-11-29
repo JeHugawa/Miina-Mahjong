@@ -14,4 +14,7 @@ class Tile:
     man = ['m1','m2','m3','m4','m5','m6','m7','m8','m9']
 
     winds = ['east','south','west','north']
-    dragons = ['green','red','white'] 
+    dragons = ['green','red','white']
+
+    terminals = ['p1','p9','s1','s9','m1','m9']
+    honours =['east','south','west','north','green','red','white']
