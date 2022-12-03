@@ -5,26 +5,30 @@ class PlayingHand:
         self.discards = discards
         self.tilepool = tilepool
 
-    def print_hand(playerhand):
+    def print_hand(self):
         print("Players hand")
-        print(playerhand.hand)
+        print(self.hand)
         print("________________")
         print("Remaining tiles")
-        print(playerhand.tilepool)
+        print(self.tilepool)
         print("_________________")
         print("Discard pool")
-        print(playerhand.discards)
+        print(self.discards)
 
-    def discard(playerhand,discard):
-        playerhand.tilepool.remove(discard)
-        playerhand.discards.append(discard)
+    def discard(self,discard):
+        self.tilepool.remove(discard)
+        self.discards.append(discard)
 
 
 class HandParser:
-    def parse_hand(selections,tiles):
+    @classmethod
+    def parse_hand(cls,selections: list, tiles):
         hand = []
-        for x in selections:
-#TODO: Remove usage of pop and pick tiles instead of positions
-            hand.append(tiles.pop(x))
+        for picked_tile in selections: #pylint: disable=not-an-iterable
+            try:
+                tiles.remove(picked_tile)
+            except ValueError:
+                return False
+            hand.append(picked_tile)
         playerhand = PlayingHand(hand, [], tiles)
         return playerhand

@@ -1,7 +1,8 @@
 import random
 # Refer to docs for rundown of tiles
 class Tile:
-    def get_tilewall():
+    @classmethod
+    def get_tilewall(cls):
         suits = Tile.pin + Tile.sou + Tile.man + Tile.winds + Tile.dragons
         wall = [tile for tile in suits for x in range(4)]
         random.shuffle(wall)

@@ -6,12 +6,12 @@
 |        | 2    | Projetkin suunnittelun ja koodin aloitus |
 | 24.11  | 1    | Dokumentaation päivitys |
 | 28.11  | 3    | Käsien laillisuuden tarkistus |
+| 3.12   | 1    | Koodin refaktorointi (pylint) |
 |        |      | |
 |        |      | |
 |        |      | |
 |        |      | |
 |        |      | |
 |        |      | |
-|        |      | |
-| yht    | 7    | |
+| yht    | 8    | |
 
