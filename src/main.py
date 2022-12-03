@@ -1,5 +1,5 @@
 from tile import Tile
-from handparser import HandParser, PlayingHand
+from handparser import HandParser
 
 
 wall = Tile.get_tilewall()
@@ -12,12 +12,23 @@ del wall[:34]
 
 p1pool.sort()
 p2pool.sort()
-print(p1pool)
 
-#TODO: pop cant be used to pick tiles from certain position as it removes the pick from list.
+p1_selected_tiles = []
+while len(p1_selected_tiles) < 13:
+    print("tiles remaining")
+    print(p1pool)
+    selected_tile = input("select a tile:")
+    p1_selected_tiles.append(selected_tile)
 
-p1hand = HandParser.parse_hand([0,0,0,0,0,0,0,0,0,0,0,0,0], p1pool)
-p2hand = HandParser.parse_hand([0,0,0,0,0,0,0,0,0,0,0,0,0], p2pool)
+p2_selected_tiles = []
+while len(p2_selected_tiles) < 13:
+    print("tiles remaining")
+    print(p2pool)
+    selected_tile = input("select a tile:")
+    p2_selected_tiles.append(selected_tile)
+
+p1hand = HandParser.parse_hand(p1_selected_tiles, p1pool)
+p2hand = HandParser.parse_hand(p2_selected_tiles, p2pool)
 
 
 #todo: currently the program doesnt work if you give illegal discard
