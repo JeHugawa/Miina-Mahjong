@@ -7,11 +7,11 @@
 | 24.11  | 1    | Dokumentaation päivitys |
 | 28.11  | 3    | Käsien laillisuuden tarkistus |
 | 3.12   | 1    | Koodin refaktorointi (pylint) |
+| 12.12  | 5    | Poetryn korjaus |
+| 13.12  | 3    | UI |
 |        |      | |
 |        |      | |
 |        |      | |
 |        |      | |
-|        |      | |
-|        |      | |
-| yht    | 8    | |
+| yht    | 15   | |
 

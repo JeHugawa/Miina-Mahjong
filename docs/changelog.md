@@ -10,3 +10,6 @@
     - lisätty kasa hyötyfunktioita käsien rakenteen tarkistukseen
     - maista ei voidan vielä tarkistaa suoria
 
+## Viikko 6
+- perus UI
+

@@ -7,9 +7,10 @@ readme = "README.md"
 packages = [{include = "miina_mahjong"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
 invoke = "^1.7.3"
 pylint = "^2.15.6"
+pyqt5 = "^5.15.7"
 
 
 [tool.poetry.group.dev.dependencies]

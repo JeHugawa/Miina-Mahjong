@@ -27,3 +27,10 @@ Voit ajaa projektin ajamalla:
 ```
 poetry run invoke start
 ```
+Voit ajaa UI version ajamalla:
+```
+poetry run invoke startui
+```
+# License
+
+Mahjong tileset designed by Code Inferno www.codeinferno.com
