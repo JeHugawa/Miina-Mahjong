@@ -28,7 +28,7 @@ class Window(QWidget):
             btn.setIcon(icon)
             size = QtCore.QSize(64,64)
             btn.setIconSize(size)
-            btn.resize(1000,1000)
+            btn.resize(64,64)
             btn.setStyleSheet("QPushButton::checked {background-color: red}")
             layout.addWidget(btn)
         self.playerTiles.setLayout(layout)
