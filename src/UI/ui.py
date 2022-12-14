@@ -2,6 +2,9 @@ from PyQt5.QtWidgets import (QApplication, QLabel, QMainWindow,
         QHBoxLayout, QWidget, QPushButton, QVBoxLayout, QGroupBox)
 from PyQt5 import QtGui, QtCore
 
+from tile import Tile
+from handparser import HandParser
+
 class Window(QWidget):
     def __init__(self,p1pool):
         super().__init__()
@@ -13,6 +16,8 @@ class Window(QWidget):
         mainLayout.addWidget(self.playButton)
         mainLayout.addWidget(self.playerTiles)
         self.setLayout(mainLayout)
+        
+        self.playButton.clicked.connect(self.startGame)
 
         self.setWindowTitle("Minefield Mahjong")
 
@@ -36,3 +41,7 @@ class Window(QWidget):
 
     def createPlayButton(self):
         self.playButton = QPushButton("Play with selected tiles")
+
+
+    def startGame(self):
+        p1hand = HandParser.parse_hand(selected_tiles, playerpool)
