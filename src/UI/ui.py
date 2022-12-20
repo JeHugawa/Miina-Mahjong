@@ -15,6 +15,7 @@ class Window(QWidget):
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(self.playButton)
         mainLayout.addWidget(self.playerTiles)
+        mainLayout.addWidget(self.playerTiles2)
         self.setLayout(mainLayout)
         
         self.playButton.clicked.connect(self.startGame)
@@ -25,7 +26,11 @@ class Window(QWidget):
     def createTileSelection(self,p1pool):
         self.playerTiles = QGroupBox("Select 13 tiles to play with, then continue")
         layout = QHBoxLayout()
-        for l in p1pool:
+        layout2 = QHBoxLayout()
+        self.playerTiles2 = QGroupBox()
+        p1poolfirst = p1pool[:17]
+        p1poolsecond = p1pool[17:]
+        for l in p1poolfirst:
             icon = QtGui.QIcon(f"src/UI/tiles/{l}.png")
             btn = QPushButton()
             btn.setCheckable(True)
@@ -36,8 +41,20 @@ class Window(QWidget):
             btn.resize(64,64)
             btn.setStyleSheet("QPushButton::checked {background-color: red}")
             layout.addWidget(btn)
+        for l in p1poolsecond:
+            icon = QtGui.QIcon(f"src/UI/tiles/{l}.png")
+            btn = QPushButton()
+            btn.setCheckable(True)
+            btn.setChecked(False)
+            btn.setIcon(icon)
+            size = QtCore.QSize(64,64)
+            btn.setIconSize(size)
+            btn.resize(64,64)
+            btn.setStyleSheet("QPushButton::checked {background-color: red}")
+            layout2.addWidget(btn)
         self.playerTiles.setLayout(layout)
-
+        self.playerTiles2.setLayout(layout2)
+        
 
     def createPlayButton(self):
         self.playButton = QPushButton("Play with selected tiles")
