@@ -9,6 +9,9 @@ class Window(QWidget):
     def __init__(self,p1pool):
         super().__init__()
 
+        self.selected_tiles = []
+        self.playerpool = p1pool
+
         self.createTileSelection(p1pool)
         self.createPlayButton()
 
@@ -18,8 +21,6 @@ class Window(QWidget):
         mainLayout.addWidget(self.playerTiles2)
         self.setLayout(mainLayout)
         
-        self.playButton.clicked.connect(self.startGame)
-
         self.setWindowTitle("Minefield Mahjong")
 
 
@@ -33,9 +34,11 @@ class Window(QWidget):
         for l in p1poolfirst:
             icon = QtGui.QIcon(f"src/UI/tiles/{l}.png")
             btn = QPushButton()
+            btn.setText(l)
             btn.setCheckable(True)
             btn.setChecked(False)
             btn.setIcon(icon)
+            btn.clicked.connect(self.tileStateChanged)
             size = QtCore.QSize(64,64)
             btn.setIconSize(size)
             btn.resize(64,64)
@@ -44,9 +47,11 @@ class Window(QWidget):
         for l in p1poolsecond:
             icon = QtGui.QIcon(f"src/UI/tiles/{l}.png")
             btn = QPushButton()
+            btn.setText(l)
             btn.setCheckable(True)
             btn.setChecked(False)
             btn.setIcon(icon)
+            btn.clicked.connect(self.tileStateChanged)
             size = QtCore.QSize(64,64)
             btn.setIconSize(size)
             btn.resize(64,64)
@@ -58,7 +63,14 @@ class Window(QWidget):
 
     def createPlayButton(self):
         self.playButton = QPushButton("Play with selected tiles")
-
+        self.playButton.clicked.connect(self.startGame)
 
     def startGame(self):
-        p1hand = HandParser.parse_hand(selected_tiles, playerpool)
+        p1hand = HandParser.parse_hand(self.selected_tiles, self.playerpool)
+        print(self.selected_tiles)
+
+    def tileStateChanged(self):
+        if self.sender().isChecked():
+            self.selected_tiles.append(self.sender().text())
+        else:
+            self.selected_tiles.remove(self.sender().text())

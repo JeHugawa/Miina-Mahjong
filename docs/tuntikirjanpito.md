@@ -9,9 +9,9 @@
 | 3.12   | 1    | Koodin refaktorointi (pylint) |
 | 12.12  | 5    | Poetryn korjaus |
 | 13.12  | 3    | UI |
+| 21.12  | 1    | UI |
 |        |      | |
 |        |      | |
 |        |      | |
-|        |      | |
-| yht    | 15   | |
+| yht    | 16   | |
 
