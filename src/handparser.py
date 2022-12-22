@@ -1,3 +1,4 @@
+import copy
 #lass for parsing hand
 class PlayingHand:
     def __init__(self, hand: list, discards: list, tilepool: list):
@@ -21,14 +22,17 @@ class PlayingHand:
 
 
 class HandParser:
-    @classmethod
-    def parse_hand(cls,selections: list, tiles):
+    @staticmethod
+    def parse_hand(selections: list, tiles):
         hand = []
+        tiles_copy = copy.deepcopy(tiles)
         for picked_tile in selections: #pylint: disable=not-an-iterable
             try:
-                tiles.remove(picked_tile)
+                tiles_copy.remove(picked_tile)
             except ValueError:
                 return False
             hand.append(picked_tile)
-        playerhand = PlayingHand(hand, [], tiles)
-        return playerhand
+        if len(hand) == 13:
+            playerhand = PlayingHand(hand, [], tiles)
+            return playerhand
+        return False

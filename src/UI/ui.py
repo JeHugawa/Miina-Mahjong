@@ -1,9 +1,11 @@
 from PyQt5.QtWidgets import (QApplication, QLabel, QMainWindow,
-        QHBoxLayout, QWidget, QPushButton, QVBoxLayout, QGroupBox)
-from PyQt5 import QtGui, QtCore
+        QHBoxLayout, QWidget, QPushButton, QVBoxLayout, QGroupBox,
+        QMessageBox)
+from PyQt5 import QtGui, QtCore, QtWidgets
 
 from tile import Tile
 from handparser import HandParser
+from UI.gameview import GameView
 
 class Window(QWidget):
     def __init__(self,p1pool):
@@ -17,6 +19,7 @@ class Window(QWidget):
 
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(self.playButton)
+       # mainLayout.addWidget(self.error_box)
         mainLayout.addWidget(self.playerTiles)
         mainLayout.addWidget(self.playerTiles2)
         self.setLayout(mainLayout)
@@ -67,8 +70,20 @@ class Window(QWidget):
 
     def startGame(self):
         p1hand = HandParser.parse_hand(self.selected_tiles, self.playerpool)
-        print(self.selected_tiles)
-
+        if type(p1hand) == type(False):
+            print(type(p1hand))
+            error_box = QMessageBox()
+            error_box.setIcon(QMessageBox.Warning)
+            error_box.setText("Invalid starting hand!")
+            error_box.exec_()
+        else:
+            valid_box = QMessageBox()
+            valid_box.setIcon(QMessageBox.Information)
+            valid_box.setText("Valid starting hand")
+            valid_box.exec_()
+        #startgame
+        
+        
     def tileStateChanged(self):
         if self.sender().isChecked():
             self.selected_tiles.append(self.sender().text())
