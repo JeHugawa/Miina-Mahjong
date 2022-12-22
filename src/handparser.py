@@ -33,6 +33,6 @@ class HandParser:
                 return False
             hand.append(picked_tile)
         if len(hand) == 13:
-            playerhand = PlayingHand(hand, [], tiles)
+            playerhand = PlayingHand(hand, [], tiles_copy)
             return playerhand
         return False

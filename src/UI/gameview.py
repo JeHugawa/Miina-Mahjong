@@ -1,5 +1,6 @@
 from PyQt5 import *
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import (QWidget, QVBoxLayout, QPushButton,
+                            QHBoxLayout, QGroupBox)
 
 from tile import Tile
 from handparser import PlayingHand
@@ -7,3 +8,44 @@ from handparser import PlayingHand
 class GameView(QWidget):
     def __init__(self, p1PlayingHand):
         super().__init__()
+        
+        self.createPlayerHand(p1PlayingHand)
+        self.createPlayerTilePool(p1PlayingHand.tilepool)
+
+        
+        mainLayout = QVBoxLayout()
+        mainLayout.addWidget(QPushButton())
+        mainLayout.addWidget(self.playerHand)
+        mainLayout.addWidget(self.playerTilePool)
+        self.setLayout(mainLayout)
+
+
+    def createPlayerHand(self, player_hand):
+        self.playerHand = QGroupBox("Player Hand")
+        layout = QHBoxLayout()
+        p1_hand = player_hand.hand
+        for tile in p1_hand:
+            icon = QtGui.QIcon(f"src/UI/tiles/{tile}.png")
+            button = QPushButton()
+            button.setEnabled(False)
+            button.setIcon(icon)
+            size = QtCore.QSize(64,64)
+            button.setIconSize(size)
+            button.resize(64,64)
+            layout.addWidget(button)
+        self.playerHand.setLayout(layout)
+
+
+    def createPlayerTilePool(self, tilepool):
+        self.playerTilePool = QGroupBox("Avaible discards")
+        layout = QHBoxLayout()
+        print(tilepool)
+        for tile in tilepool:
+            icon = QtGui.QIcon(f"src/UI/tiles/{tile}.png")
+            button = QPushButton()
+            button.setIcon(icon)
+            size = QtCore.QSize(64,64)
+            button.setIconSize(size)
+            button.resize(64,64)
+            layout.addWidget(button)
+        self.playerTilePool.setLayout(layout)

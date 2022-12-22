@@ -17,12 +17,11 @@ class Window(QWidget):
         self.createTileSelection(p1pool)
         self.createPlayButton()
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addWidget(self.playButton)
-       # mainLayout.addWidget(self.error_box)
-        mainLayout.addWidget(self.playerTiles)
-        mainLayout.addWidget(self.playerTiles2)
-        self.setLayout(mainLayout)
+        self.mainLayout = QVBoxLayout()
+        self.mainLayout.addWidget(self.playButton)
+        self.mainLayout.addWidget(self.playerTiles)
+        self.mainLayout.addWidget(self.playerTiles2)
+        self.setLayout(self.mainLayout)
         
         self.setWindowTitle("Minefield Mahjong")
 
@@ -81,9 +80,13 @@ class Window(QWidget):
             valid_box.setIcon(QMessageBox.Information)
             valid_box.setText("Valid starting hand")
             valid_box.exec_()
-        #startgame
-        
-        
+            game_view = GameView(p1hand)
+#https://stackoverflow.com/questions/4528347/clear-all-widgets-in-a-layout-in-pyqt/13103617#13103617
+            for i in reversed(range(self.mainLayout.count())): 
+                self.mainLayout.itemAt(i).widget().setParent(None)
+            self.mainLayout.addWidget(game_view)
+            
+
     def tileStateChanged(self):
         if self.sender().isChecked():
             self.selected_tiles.append(self.sender().text())
