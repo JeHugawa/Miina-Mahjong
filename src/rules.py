@@ -70,8 +70,12 @@ class Rules:
                 if suit in Tile.honours and not Rules.is_pon(splitted_hand[suit]):
                     return False
                 if not Rules.checkSuitForCompleteness(splitted_hand[suit]):
-                    return False                
-        return True
+                    return False
+        waiting_suit_tiles = defaultdict(list)
+        for suit in waiting_suits:
+            for tile in splitted_hand[suit]:
+                waiting_suit_tiles[suit].append(tile)
+        return Rules.checkWaitingSuits(waiting_suit_tiles)
 
     @classmethod
     def checkSuitForCompleteness(cls, suit):
@@ -93,3 +97,28 @@ class Rules:
         except IndexError:
             return False
         return False
+
+    @classmethod
+    def checkWaitingSuits(cls, waiting_suits):
+        keys = []
+        for key in waiting_suits:
+            keys.append(key)
+        if len(waiting_suits) == 1:
+            only_suit = waiting_suits[keys[0]]
+            if len(only_suit) == 1:
+                return True
+            elif len(only_suit) == 2:
+                if only_suit[0] < only_suit[1]:
+                    return True
+                elif int(re.sub('\D', '', only_suit[0])) < (int(re.sub('\D', '', only_suit[0]))+1) <  int(re.sub('\D', '', only_suit[1])):
+                    return True
+            return False
+        if len(waiting_suits[keys[0]]) == 2 and len(waiting_suits[keys[1]]) == 2:
+            for suit in waiting_suits:
+                if not waiting_suits[suit][0] == waiting_suits[suit][1]:
+                    if not waiting_suits[suit][0] < waiting_suits[suit][1]:
+                        if not int(re.sub('\D', '', waiting_suits[suit][0])) < (int(re.sub('\D', '', waiting_suits[suit][0]))+1) <  int(re.sub('\D', '', waiting_suits[suit][1])):
+                            return False
+            return True
+        # Todo: currently code assumes the waiting suits dont have other components than the waiting tiles, or that the tiles are correct anyway
+        return True

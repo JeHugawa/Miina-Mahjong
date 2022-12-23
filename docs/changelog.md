@@ -13,3 +13,7 @@
 ## Viikko 6
 - perus UI
 
+## Viikko 7
+- UIn kasvattaminen
+- pelilogiikan kasvatus
+- pelilogiikan sitominen UIhin

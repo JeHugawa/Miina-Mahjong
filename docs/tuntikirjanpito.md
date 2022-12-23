@@ -10,8 +10,8 @@
 | 12.12  | 5    | Poetryn korjaus |
 | 13.12  | 3    | UI |
 | 21.12  | 2    | UI |
+| 23.12  | 2    | Pelilogiikan parantelu |
 |        |      | |
 |        |      | |
-|        |      | |
-| yht    | 17   | |
+| yht    | 20   | |
 
