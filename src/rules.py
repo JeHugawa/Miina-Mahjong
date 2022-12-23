@@ -23,8 +23,7 @@ class Rules:
             return True
         return False
 
-
-    #check how many suits
+    #check how many suits are waiting
     @classmethod
     def suit_counter(cls,hand):
         amount = {}
@@ -59,9 +58,8 @@ class Rules:
             splitted_hand[stripped_tile].append(tile)
         return splitted_hand
 
-
-    @classmethod
-    def is_tenpai(cls,hand):
+    @staticmethod
+    def is_tenpai(hand):
         waiting_suits = Rules.suit_counter(hand)
         if len(waiting_suits) > 2:
             return False
@@ -71,7 +69,27 @@ class Rules:
             if suit not in waiting_suits:
                 if suit in Tile.honours and not Rules.is_pon(splitted_hand[suit]):
                     return False
-                #else:
-                    # TODO
-                    # TODO: figure out good way to detect formations like 111123 or 12222
+                if not Rules.checkSuitForCompleteness(splitted_hand[suit]):
+                    return False                
         return True
+
+    @classmethod
+    def checkSuitForCompleteness(cls, suit):
+        if not suit:
+            return True
+        first_three = [suit[0], suit[1], suit[2]]
+        if Rules.is_pon(first_three):
+            return Rules.checkSuitForCompleteness(suit[3:])
+        first_three = [suit[0]]
+        #tiles are sorted, so next tile that is not the same as current tile will be next in sequence
+        for tile in suit[1:]:
+            if tile != first_three[-1]:
+                first_three.append(tile)
+            if len(first_three) == 3:
+                break
+        try:
+            if Rules.is_chi(first_three):
+                return Rules.checkSuitForCompleteness(suit[3:])
+        except IndexError:
+            return False
+        return False
