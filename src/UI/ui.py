@@ -6,6 +6,7 @@ from PyQt5 import QtGui, QtCore, QtWidgets
 from tile import Tile
 from handparser import HandParser
 from UI.gameview import GameView
+from rules import Rules
 
 class Window(QWidget):
     def __init__(self,p1pool):
@@ -69,7 +70,7 @@ class Window(QWidget):
 
     def startGame(self):
         p1hand = HandParser.parse_hand(self.selected_tiles, self.playerpool)
-        if type(p1hand) == type(False):
+        if type(p1hand) == type(False) or Rules.is_tenpai(self.selected_tiles) == False:
             print(type(p1hand))
             error_box = QMessageBox()
             error_box.setIcon(QMessageBox.Warning)

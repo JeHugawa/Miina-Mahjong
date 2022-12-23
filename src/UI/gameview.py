@@ -48,4 +48,9 @@ class GameView(QWidget):
             button.setIconSize(size)
             button.resize(64,64)
             layout.addWidget(button)
+            button.clicked.connect(self.discardTile)
         self.playerTilePool.setLayout(layout)
+
+
+    def discardTile(self):
+        self.sender().deleteLater()
