@@ -11,10 +11,12 @@ class GameView(QWidget):
         
         self.createPlayerHand(p1PlayingHand)
         self.createPlayerTilePool(p1PlayingHand.tilepool)
+        self.createDiscardPool()
 
         
         mainLayout = QVBoxLayout()
         mainLayout.addWidget(QPushButton())
+        mainLayout.addWidget(self.discards)
         mainLayout.addWidget(self.playerHand)
         mainLayout.addWidget(self.playerTilePool)
         self.setLayout(mainLayout)
@@ -53,4 +55,11 @@ class GameView(QWidget):
 
 
     def discardTile(self):
-        self.sender().deleteLater()
+        discard = self.sender()
+        discard.setEnabled(False)
+        self.discards_layout.addWidget(discard)
+
+    def createDiscardPool(self):
+        self.discards = QGroupBox("Discarded tiles")
+        self.discards_layout = QHBoxLayout()
+        self.discards.setLayout(self.discards_layout)

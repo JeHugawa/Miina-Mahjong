@@ -112,6 +112,10 @@ class Rules:
                     return True
                 elif int(re.sub('\D', '', only_suit[0])) < (int(re.sub('\D', '', only_suit[0]))+1) <  int(re.sub('\D', '', only_suit[1])):
                     return True
+            if len(only_suit) == 4:
+                if only_suit[0] == [1]:
+                    if only_suit[2] == only_suit[3]:
+                        return False
             return False
         if len(waiting_suits[keys[0]]) == 2 and len(waiting_suits[keys[1]]) == 2:
             for suit in waiting_suits:
