@@ -7,7 +7,9 @@ class PlayingHand:
         self.tilepool = tilepool
 
     def __eq__(self, other):
-        return (self.hand, self.discards, self.tilepool) == (other.hand, other.discards, other.tilepool)
+        self_values = (self.hand, self.discards, self.tilepool)
+        other_values =  (other.hand, other.discards, other.tilepool)
+        return self_values == other_values
 
     def print_hand(self):
         print("Players hand")

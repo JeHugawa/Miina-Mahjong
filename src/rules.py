@@ -17,12 +17,6 @@ class Rules:
             return True
         return False
 
-    @classmethod
-    def is_pair(cls,selection):
-        if selection[0] == selection[1]:
-            return True
-        return False
-
     #check how many suits are waiting
     @classmethod
     def suit_counter(cls,hand):
@@ -31,9 +25,9 @@ class Rules:
             tile = re.sub(r'\d+', '', tile)
             amount[tile] = amount.setdefault(tile,0) +1
         waiting_suits = []
-        for key in amount:
-            if amount[key] % 3 != 0:
-                waiting_suits.append(key)
+        for suit, tile_count in amount.items():
+            if tile_count % 3 != 0:
+                waiting_suits.append(suit)
         return waiting_suits
 
     @classmethod
@@ -69,21 +63,21 @@ class Rules:
             if suit not in waiting_suits:
                 if suit in Tile.honours and not Rules.is_pon(splitted_hand[suit]):
                     return False
-                if not Rules.checkSuitForCompleteness(splitted_hand[suit]):
+                if not Rules.check_suit_for_completeness(splitted_hand[suit]):
                     return False
         waiting_suit_tiles = defaultdict(list)
         for suit in waiting_suits:
             for tile in splitted_hand[suit]:
                 waiting_suit_tiles[suit].append(tile)
-        return Rules.checkWaitingSuits(waiting_suit_tiles)
+        return Rules.check_waiting_suits(waiting_suit_tiles)
 
     @classmethod
-    def checkSuitForCompleteness(cls, suit):
+    def check_suit_for_completeness(cls, suit):
         if not suit:
             return True
         first_three = [suit[0], suit[1], suit[2]]
         if Rules.is_pon(first_three):
-            return Rules.checkSuitForCompleteness(suit[3:])
+            return Rules.check_suit_for_completeness(suit[3:])
         first_three = [suit[0]]
         #tiles are sorted, so next tile that is not the same as current tile will be next in sequence
         for tile in suit[1:]:
@@ -93,13 +87,13 @@ class Rules:
                 break
         try:
             if Rules.is_chi(first_three):
-                return Rules.checkSuitForCompleteness(suit[3:])
+                return Rules.check_suit_for_completeness(suit[3:])
         except IndexError:
             return False
         return False
 
     @classmethod
-    def checkWaitingSuits(cls, waiting_suits):
+    def check_waiting_suits(cls, waiting_suits):
         keys = []
         for key in waiting_suits:
             keys.append(key)
@@ -107,10 +101,10 @@ class Rules:
             only_suit = waiting_suits[keys[0]]
             if len(only_suit) == 1:
                 return True
-            elif len(only_suit) == 2:
+            if len(only_suit) == 2:
                 if only_suit[0] < only_suit[1]:
                     return True
-                elif int(re.sub('\D', '', only_suit[0])) < (int(re.sub('\D', '', only_suit[0]))+1) <  int(re.sub('\D', '', only_suit[1])):
+                if int(re.sub(r'\D', '', only_suit[0])) < (int(re.sub(r'\D', '', only_suit[0]))+1) <  int(re.sub(r'\D', '', only_suit[1])):
                     return True
             if len(only_suit) == 4:
                 if only_suit[0] == [1]:
@@ -121,7 +115,7 @@ class Rules:
             for suit in waiting_suits:
                 if not waiting_suits[suit][0] == waiting_suits[suit][1]:
                     if not waiting_suits[suit][0] < waiting_suits[suit][1]:
-                        if not int(re.sub('\D', '', waiting_suits[suit][0])) < (int(re.sub('\D', '', waiting_suits[suit][0]))+1) <  int(re.sub('\D', '', waiting_suits[suit][1])):
+                        if not int(re.sub(r'\D', '', waiting_suits[suit][0])) < (int(re.sub(r'\D', '', waiting_suits[suit][0]))+1) <  int(re.sub(r'\D', '', waiting_suits[suit][1])):
                             return False
             return True
         # Todo: currently code assumes the waiting suits dont have other components than the waiting tiles, or that the tiles are correct anyway
