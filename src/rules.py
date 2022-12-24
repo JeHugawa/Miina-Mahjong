@@ -42,6 +42,7 @@ class Rules:
     def check_hand_completeness(cls,hand):
         if len(hand) != 14:
             return False
+        return True
         # check_winning_tiles-> if in tiles return true
 
     @classmethod
@@ -79,7 +80,8 @@ class Rules:
         if Rules.is_pon(first_three):
             return Rules.check_suit_for_completeness(suit[3:])
         first_three = [suit[0]]
-        #tiles are sorted, so next tile that is not the same as current tile will be next in sequence
+        #tiles are sorted, so next tile that is not the same as current tile will be
+        #next in sequence
         for tile in suit[1:]:
             if tile != first_three[-1]:
                 first_three.append(tile)
@@ -104,7 +106,8 @@ class Rules:
             if len(only_suit) == 2:
                 if only_suit[0] < only_suit[1]:
                     return True
-                if int(re.sub(r'\D', '', only_suit[0])) < (int(re.sub(r'\D', '', only_suit[0]))+1) <  int(re.sub(r'\D', '', only_suit[1])):
+                if (int(re.sub(r'\D', '', only_suit[0])) < (int(re.sub(r'\D', '', only_suit[0]))+1)
+                    <  int(re.sub(r'\D', '', only_suit[1]))):
                     return True
             if len(only_suit) == 4:
                 if only_suit[0] == [1]:
@@ -115,8 +118,11 @@ class Rules:
             for suit in waiting_suits:
                 if not waiting_suits[suit][0] == waiting_suits[suit][1]:
                     if not waiting_suits[suit][0] < waiting_suits[suit][1]:
-                        if not int(re.sub(r'\D', '', waiting_suits[suit][0])) < (int(re.sub(r'\D', '', waiting_suits[suit][0]))+1) <  int(re.sub(r'\D', '', waiting_suits[suit][1])):
+                        if not (int(re.sub(r'\D', '', waiting_suits[suit][0]))
+                                 < (int(re.sub(r'\D', '', waiting_suits[suit][0]))+1)
+                                 <  int(re.sub(r'\D', '', waiting_suits[suit][1]))):
                             return False
             return True
-        # Todo: currently code assumes the waiting suits dont have other components than the waiting tiles, or that the tiles are correct anyway
+        #Todo: currently code assumes the waiting suits dont have other component
+        #than the waiting tiles or that the tiles are correct anyway
         return True
