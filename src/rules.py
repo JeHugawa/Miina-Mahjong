@@ -59,6 +59,8 @@ class Rules:
 
     @staticmethod
     def is_tenpai(hand):
+        if len(hand) != 13:
+            return False
         waiting_suits = Rules.suit_counter(hand)
         if len(waiting_suits) > 2:
             return False
@@ -93,7 +95,10 @@ class Rules:
                 break
         try:
             if Rules.is_chi(first_three):
-                return Rules.check_suit_for_completeness(suit[3:])
+                chiless_suit = suit
+                for tile in first_three:
+                    chiless_suit.remove(tile)
+                return Rules.check_suit_for_completeness(chiless_suit)
         except IndexError:
             return False
         return False
