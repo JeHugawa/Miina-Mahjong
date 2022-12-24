@@ -14,7 +14,11 @@ class Rules:
     def is_chi(cls,selection):
         selection = sorted(selection)
         if selection[0] < selection[1] < selection[2]:
-            return True
+            if (int(re.sub(r'\D', '', selection[0])) ==
+               (int(re.sub(r'\D','',selection[1]))-1)):
+                if (int(re.sub(r'\D', '', selection[1])) ==
+                   (int(re.sub(r'\D', '', selection[2]))-1)):
+                    return True
         return False
 
     #check how many suits are waiting
