@@ -11,7 +11,7 @@
 | 13.12  | 3    | UI |
 | 21.12  | 2    | UI |
 | 23.12  | 2    | Pelilogiikan parantelu |
+| 24.12  | 1    | Testit |
 |        |      | |
-|        |      | |
-| yht    | 20   | |
+| yht    | 21   | |
 

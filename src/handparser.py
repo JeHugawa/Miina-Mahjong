@@ -6,6 +6,9 @@ class PlayingHand:
         self.discards = discards
         self.tilepool = tilepool
 
+    def __eq__(self, other):
+        return (self.hand, self.discards, self.tilepool) == (other.hand, other.discards, other.tilepool)
+
     def print_hand(self):
         print("Players hand")
         print(self.hand)
