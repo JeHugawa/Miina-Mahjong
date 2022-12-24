@@ -1,8 +1,16 @@
 import random
-# Refer to docs for rundown of tiles
+
 class Tile:
+    """Tiilimuurin rakentamisesta vastaava luokka.
+    luokasta saa myös tarvittaessa tiedon erityyppisistä tiilistä
+    """
     @classmethod
     def get_tilewall(cls):
+        """Generoi aloitusmuurin ja palauttaa sen
+
+        Returns:
+            lista, missä on jokaista tiiltä 4 kappaletta, sattumanvaraisesti sekoitettuna
+        """
         suits = Tile.pin + Tile.sou + Tile.man + Tile.winds + Tile.dragons
         wall = [tile for tile in suits for x in range(4)]
         random.shuffle(wall)
