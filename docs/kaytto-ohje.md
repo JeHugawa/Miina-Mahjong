@@ -10,10 +10,6 @@ Voit ajaa projektin ajamalla:
 ```
 poetry run invoke start
 ```
-Voit ajaa UI version ajamalla:
-```
-poetry run invoke startui
-```
 
 ### kehityskomennot
 
