@@ -1,5 +1,6 @@
 import re
 from collections import defaultdict
+import copy
 
 from tile import Tile
 class Rules:
@@ -48,22 +49,51 @@ class Rules:
         return waiting_suits
 
     @classmethod
-    def check_winning_tiles(cls, hand,waiting_suits):
-        pass
-        # TODO
-        #return winning_tiles
+    def check_winning_tiles(cls,waiting_suits):
+        """Palauttaa mahdolliset voittotiilet
+        Args:
+            waiting suits: dict missä on maa ja sen tiilet
+        Returns:
+            tiilet joilla pelaaja voi voittaa.
+        """
+        winning_tiles = []
+        for suit in waiting_suits:
+            if suit in Tile.honours:
+                winning_tiles.append(suit)
+            else:
+                #disabling pylint here, using exec isnt style issue per say
+                exec("suit_tiles = Tile." + suit,globals()) #pylint: disable=exec-used
+                for tile in suit_tiles: #pylint: disable=undefined-variable
+                    tiles_to_check = waiting_suits[suit]
+                    if Rules.check_suit_for_completeness(tiles_to_check + [tile]):
+                        winning_tiles.append(tile)
+        return winning_tiles
 
 
-    #for a valid hand you need 4 sets and a pair
-    @classmethod
-    def check_hand_completeness(cls,hand):
-        if len(hand) != 14:
-            return False
-        return True
-        # check_winning_tiles-> if in tiles return true
+    @staticmethod
+    def return_winning_tiles(hand):
+        """wrapperifunktio UIta varten, joka palauttaa voittotiilet.
+        Args:
+            pelaajan kädessä olevat tiilet
+        Returns:
+            tiilet joilla pelaaja voi voittaa.
+        """
+        waiting_suits = Rules.suit_counter(hand)
+        splitted_hand = Rules.suit_splitter(hand)
+        waiting_hand = copy.deepcopy(splitted_hand)
+        for suit in splitted_hand:
+            if suit not in waiting_suits:
+                del waiting_hand[suit]
+        return Rules.check_winning_tiles(waiting_hand)
 
     @classmethod
     def suit_splitter(cls,hand):
+        """Funktio jakaa käden maihin.
+        Args:
+            Pelaajan käsi
+        Returns:
+            Dictionary, missä avaimena on maa ja avaimen takana on maassa olevat tiilet.
+        """
         splitted_hand = defaultdict(list)
         for tile in hand:
             stripped_tile = re.sub(r'\d+', '', tile)
@@ -163,6 +193,4 @@ class Rules:
                                  <  int(re.sub(r'\D', '', waiting_suits[suit][1]))):
                             return False
             return True
-        #Todo: currently code assumes the waiting suits dont have other component
-        #than the waiting tiles or that the tiles are correct anyway
         return True

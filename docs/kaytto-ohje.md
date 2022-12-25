@@ -52,3 +52,7 @@ Player hand näyttää sinun valitsemasi tiilet. Niiden alapuolella Avaible Disc
 | ![diskitty](./kuvat/kayttoohje-diskaaminen.png) |
 | --- |
 | Esimerkki pelinäkymästä kun tiiliä on heitetty pois |
+
+voit heittää tiiliä niin kauan kuin haluat pois. Jos vastustaja heittää sinun voittotiilen peli ilmoittaa siitä sinulle automaattisesti.
+
+![voitettu](./kuvat/kayttoohje-voittaminen.png)

@@ -20,11 +20,12 @@ class Window(QWidget):
         playertTiles: ensimmäinen puolisko tiilistä mistä pelaaja voi valita.
         playerTiles: toinen puolisko tiilistä mistä pelaaja voi valita.
     """
-    def __init__(self,p1pool):
+    def __init__(self,p1pool,p2pool):
         super().__init__()
 
         self.selected_tiles = []
         self.playerpool = p1pool
+        self.p2pool = p2pool
 
         self.createTileSelection(p1pool)
         self.createPlayButton()
@@ -103,7 +104,7 @@ class Window(QWidget):
             valid_box.setIcon(QMessageBox.Information)
             valid_box.setText("Valid starting hand")
             valid_box.exec_()
-            game_view = GameView(p1hand)
+            game_view = GameView(p1hand,self.p2pool)
 #https://stackoverflow.com/questions/4528347/clear-all-widgets-in-a-layout-in-pyqt/13103617#13103617
             for i in reversed(range(self.mainLayout.count())): 
                 self.mainLayout.itemAt(i).widget().setParent(None)
