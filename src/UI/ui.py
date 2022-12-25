@@ -9,6 +9,17 @@ from UI.gameview import GameView
 from rules import Rules
 
 class Window(QWidget):
+    """Luokka vastaa pelin alussa tapahtuvan tiilien valinnan käsittelyssä UIssa.
+
+    Attributes:
+        selected_tiles: tiilet jotka pelaaja valitsee interaktiivisesti UIssa.
+        playerpool: tiilet, joista pelaaja voi valita.
+        mainLayout: layout, millä nivotaan yhteen loput layoutit.
+        tämän lisäksi on eri layoutteja, mitkä nivotaan yhteen mainLayoutissa.
+        playButton: Pelin aloitusnappi, kun tiilet on valittu.
+        playertTiles: ensimmäinen puolisko tiilistä mistä pelaaja voi valita.
+        playerTiles: toinen puolisko tiilistä mistä pelaaja voi valita.
+    """
     def __init__(self,p1pool):
         super().__init__()
 
@@ -28,6 +39,12 @@ class Window(QWidget):
 
 
     def createTileSelection(self,p1pool):
+        """Luo UI komponentit tiilien valintaa varten.
+
+        Args:
+            p1pool: pelaajan tiilet, mistä pelaaja voi valita, ja joista napit generoidaan.
+
+        """
         self.playerTiles = QGroupBox("Select 13 tiles to play with, then continue")
         layout = QHBoxLayout()
         layout2 = QHBoxLayout()
@@ -65,13 +82,18 @@ class Window(QWidget):
         
 
     def createPlayButton(self):
+        """Luo pelin aloitusnapin, joka aloittaa pelin.
+        """
         self.playButton = QPushButton("Play with selected tiles")
         self.playButton.clicked.connect(self.startGame)
 
     def startGame(self):
+        """startGame yrittää aloittaa pelin, ja jos se ei pysty aloittamaan
+        peliä (liian lyhyt tai laiton käsi) se tekee virheen
+        """
+        self.selected_tiles.sort()
         p1hand = HandParser.parse_hand(self.selected_tiles, self.playerpool)
         if type(p1hand) == type(False) or Rules.is_tenpai(self.selected_tiles) == False:
-            print(type(p1hand))
             error_box = QMessageBox()
             error_box.setIcon(QMessageBox.Warning)
             error_box.setText("Invalid starting hand!")
@@ -89,6 +111,8 @@ class Window(QWidget):
             
 
     def tileStateChanged(self):
+        """Funktio mitä valitsee tai epävalitsee tiilen, kun pelaaja klikkaa sitä
+        """
         if self.sender().isChecked():
             self.selected_tiles.append(self.sender().text())
         else:

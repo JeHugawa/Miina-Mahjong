@@ -6,6 +6,10 @@ from tile import Tile
 from handparser import PlayingHand
 
 class GameView(QWidget):
+    """Luokka vastaa pelin kulusta kun peli on aloitettu tiilien valitsemisen jälkeen
+
+    Attributes:
+    """
     def __init__(self, p1PlayingHand):
         super().__init__()
         
@@ -23,6 +27,11 @@ class GameView(QWidget):
 
 
     def createPlayerHand(self, player_hand):
+        """Generoi pelaajan käden UIhin hänen valinnoistaan
+
+        Args:
+            player_hand: pelaajan valitsemat tiilet joiden perusteella ne lisätään UIhin
+        """
         self.playerHand = QGroupBox("Player Hand")
         layout = QHBoxLayout()
         p1_hand = player_hand.hand
@@ -39,9 +48,13 @@ class GameView(QWidget):
 
 
     def createPlayerTilePool(self, tilepool):
+        """Generoi UIhin pelaajan jäljellä olevat tiilet, mistä hän voi heittää pois tiiliä.
+
+        Args:
+            tilepool: pelaajan jäljellä olevat tiilet
+        """
         self.playerTilePool = QGroupBox("Avaible discards")
         layout = QHBoxLayout()
-        print(tilepool)
         for tile in tilepool:
             icon = QtGui.QIcon(f"src/UI/tiles/{tile}.png")
             button = QPushButton()
@@ -55,11 +68,15 @@ class GameView(QWidget):
 
 
     def discardTile(self):
+        """Funktio mitä kutsutaan kun pelaaja heittää pois tiilen
+        """
         discard = self.sender()
         discard.setEnabled(False)
         self.discards_layout.addWidget(discard)
 
     def createDiscardPool(self):
+        """Luo UIhin poisheitetyille tiilille oman alueen UIssa
+        """
         self.discards = QGroupBox("Discarded tiles")
         self.discards_layout = QHBoxLayout()
         self.discards.setLayout(self.discards_layout)
