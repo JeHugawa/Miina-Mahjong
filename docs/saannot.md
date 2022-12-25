@@ -28,3 +28,16 @@ Pelin alussa jaetaan 34 tiiltä muurista(kaikki mahdolliset tiilet * 4) tämän 
 
 kun pelaaja on valinnut mieleisensä 13 tiiltä, peli voi alkaa.
 Tämän jälkeen pelaajat heittävät heidän jäljellä olevista 21 tiilestä pois, kunnes joku vastustajan tiilistä täydentää yhden pelaajan omista käsistään tai kunnes molemmat pelaajat ovat pois tiilistä.
+
+## Terminologia
+
+Miina Mahjong perustuu japanilaiseen riichi mahjongiin, joten osaa termeistä käytetään tässäkin versiossa.
+
+| Termi  | Selitys    |
+| ---    | --- |
+| Tenpai |  Käsi, joka on yhden päästä voitosta  |
+| Chi    | kolmen suora tiiliä |
+| pon    | kolme samaa tiiltä |
+| man    | numerotiilet |
+| pin    | pallotiilet |
+| sou    | bambutiilet |

@@ -15,5 +15,5 @@
 | 24.12  | 1    | testien lisääminen ja docstring dokumentaatio |
 | 24.12  | 1    | dokumentaation päivitys |
 | 25.12  | 1    | dokumentaatio |
-| yht    | 24   | |
-
+| 25.12  | 1    | luokkakaavio ja dokumentaatio |
+| yht    | 25   | |

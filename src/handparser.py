@@ -1,5 +1,5 @@
 import copy
-#lass for parsing hand
+
 class PlayingHand:
     """Luokka, jolla hallitaan pelaajan käden tietoja.
 
