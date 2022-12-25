@@ -12,6 +12,8 @@
 | 21.12  | 2    | UI |
 | 23.12  | 2    | Pelilogiikan parantelu |
 | 24.12  | 1    | Testit |
-| 24 12  | 1    | testien lisääminen ja docstring dokumentaatio |
-| yht    | 22   | |
+| 24.12  | 1    | testien lisääminen ja docstring dokumentaatio |
+| 24.12  | 1    | dokumentaation päivitys |
+| 25.12  | 1    | dokumentaatio |
+| yht    | 24   | |
 

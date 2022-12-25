@@ -17,3 +17,5 @@
 - UIn kasvattaminen
 - pelilogiikan kasvatus
 - pelilogiikan sitominen UIhin
+- testit
+- docstring dokumentaatio

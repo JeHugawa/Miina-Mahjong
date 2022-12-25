@@ -14,14 +14,5 @@ Pelissä on kaksi Pelaajaa. Pelaajat voivat olla joko ihmisiä tai tekoälyjä. 
 - [x] Pelaajat saavat alussa tiilensä ja voivat valita kätensä
 - [x] Pelaajat voivat vuorotellen heittää tiilen pois
 - [ ] pelaajat voivat julistaa voiton
-- [ ] Käsien laillisuuden tarkistus
-- [ ] Graafinen käyttöliittymä pelille
-
-# jatkokehitus
-- [ ] Peliin lisätään kertoimia ja niiden tarkistus
-  - [ ] kertoimien hallitseminen (confi)tiedoston perusteella
-  - [ ] kertoimien pisteenlasku
-- [ ] Voittamiseen vähimmäis pisteraja
-- [ ] minipisteet
-- [ ] Dora ja Uradora
-- [ ] Furiten-sääntö
+- [x] Käsien laillisuuden tarkistus
+- [x] Graafinen käyttöliittymä pelille
