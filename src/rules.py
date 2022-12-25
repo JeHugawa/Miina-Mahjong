@@ -6,12 +6,20 @@ class Rules:
 
     @classmethod
     def is_pon(cls,selection):
+        """Tarkistaa onko annettu setti pon (3 samaa)
+        Args:
+            selection: lista jossa on 3 tiiltä
+        """
         if selection[0] == selection[1] == selection[2]:
             return True
         return False
 
     @classmethod
     def is_chi(cls,selection):
+        """tarkistaa onko annettu setti chi (kolmen suora)
+        Args:
+            selection: lista jossa on 3 tiiltä
+        """
         selection = sorted(selection)
         if selection[0] < selection[1] < selection[2]:
             if (int(re.sub(r'\D', '', selection[0])) ==
@@ -21,9 +29,14 @@ class Rules:
                     return True
         return False
 
-    #check how many suits are waiting
     @classmethod
     def suit_counter(cls,hand):
+        """Laskee montako eri maata on odottamassa tiiltä. Maa odottaa tiiltä jos siinä ei ole 3 jaollinen.
+        Args:
+            hand: pelaajan käsi
+        Returns:
+            Palauttaa listan missä on kaikki eri maat mitä pelaaja odottaa
+        """
         amount = {}
         for tile in hand:
             tile = re.sub(r'\d+', '', tile)
@@ -59,6 +72,12 @@ class Rules:
 
     @staticmethod
     def is_tenpai(hand):
+        """tarkistaa onko käsi yhden päässä voitossa (tenpai)
+        Args:
+            hand: pelaajan käsi
+        Returns:
+            Palauttaa True jos pelaajan käsi on tenpai, palauttaa False jos ei ole
+        """
         if len(hand) != 13:
             return False
         waiting_suits = Rules.suit_counter(hand)
@@ -80,6 +99,12 @@ class Rules:
 
     @classmethod
     def check_suit_for_completeness(cls, suit):
+        """Tarkistaa onko annettu maa laillinen
+        Args:
+            suit: lista, missä on annetun maan tiilet
+        Returns:
+            palauttaa False jos maa ei ole laillinen, True jos on
+        """
         if not suit:
             return True
         first_three = [suit[0], suit[1], suit[2]]
@@ -105,6 +130,12 @@ class Rules:
 
     @classmethod
     def check_waiting_suits(cls, waiting_suits):
+        """Funktio tarkistaa sellaisen annetut maat, mikä odottaa tiiliä
+        Args:
+            waiting_suits: dictionary missä on maat ja niiden tiilet
+        returns:
+            palauttaa True jos laillisia, False jos ei ole
+        """
         keys = []
         for key in waiting_suits:
             keys.append(key)
