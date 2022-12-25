@@ -10,7 +10,7 @@ Pelin alussa molemmat pelaajat nostavat 34 tiiltä. Sen jälkeen he tekevät yhd
 
 ## Dokumentaatio
 - [Säännöt](./docs/saannot.md)
-- [Käyttöohje](./docs/kayttoohje.md)
+- [Käyttöohje](./docs/kaytto-ohje.md)
 - [Työaikakirjanpito](./docs/tuntikirjanpito.md)
 - [Changelog](./docs/changelog.md)
 - [Määrittelydokumentti](./docs/vaatimusmaarittely.md)
