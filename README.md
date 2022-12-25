@@ -16,6 +16,7 @@ Pelin alussa molemmat pelaajat nostavat 34 tiiltä. Sen jälkeen he tekevät yhd
 - [Määrittelydokumentti](./docs/vaatimusmaarittely.md)
 - [Luokkakaavio](./docs/kuvat/luokkakaavio.png)
 - [Arkkitehtuurikuvaus](./docs/arkkitehtuurikuvaus.md)
+- [Testidokumentti](./docs/testidokumentti.md)
 ## käyttöohjeet
 
 Asenna projekti ajamalla:

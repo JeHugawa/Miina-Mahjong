@@ -19,3 +19,4 @@
 - pelilogiikan sitominen UIhin
 - testit
 - docstring dokumentaatio
+- voittaminen vastustajan poisheittämistä tiilistä
